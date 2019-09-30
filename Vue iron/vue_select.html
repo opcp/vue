@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+    >
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+    >
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+    >
+    </script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <section>
+            <div class="container">
+                <!-- 第一天隱藏 -->
+                <!-- index != 0 -->
+                <button
+                    v-if="index > 0"
+                    class="arrow-left"
+                    @click="changeIndex(-1)"
+                > left </button>
+                <span class="number"> {{index+1}} </span>
+                <span class="type"> {{ today.type}} </span>
+                <a
+                    :href="today.link"
+                    class="title"
+                    target="vue-iron"
+                > {{ today.title}} </a>
+                <!-- 最後一天隱藏 -->
+                <!-- index != total -->
+                <button
+                    v-if="index < total -1 "
+                    class="arrow-left"
+                    @click="changeIndex(1)"
+                > right </button>
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+    let data = {
+        title: 'Vue.js',
+        index: 0,
+        menu: [
+            { type: 'vue入門', title: '第1天', linl: 'javascript:;' },
+            { type: 'vue入門', title: '第2天', linl: 'javascript:;' },
+            { type: 'vue入門', title: '第3天', linl: 'javascript:;' },
+            { type: 'vue中段', title: '第4天', linl: 'javascript:;' },
+            { type: 'vue中段', title: '第5天', linl: 'javascript:;' },
+            { type: 'vue中段', title: '第6天', linl: 'javascript:;' },
+            { type: 'vue進階', title: '第7天', linl: 'javascript:;' },
+            { type: 'vue進階', title: '第8天', linl: 'javascript:;' },
+            { type: 'vue進階', title: '第9天', linl: 'javascript:;' },
+            { type: 'vue進階', title: '第10天', linl: 'javascript:;' },
+        ]
+    }
+
+    let vm = new Vue({
+        el: '#app',
+        data: data,
+        computed: {
+            today() {
+                return this.menu[this.index]
+            },
+            total() {
+                return this.menu.length
+            }
+        },
+        methods: {
+            changeIndex(change) {
+                this.index = (this.index + change + this.total) % this.total
+            }
+        }
+    })
+</script>
+
+</html>

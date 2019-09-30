@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item,index in items" :key="index">
+                    {{index}}:{{item.message}} 
+            </li>
+        </ul>
+        <ul>
+            <li v-for="value,key in object" :key="key">
+             {{key}}:{{value}}
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                items: [
+                    { message: 'Foo' },
+                    { message: 'Bar' },
+                ],
+                object:{
+                    title:'list for vue',
+                    author:'shan',
+                    data:'2048-01-03'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div id="example-1">
+            <input v-model="message" placeholder="edit me">
+            <p>Message is : {{message}} </p>
+            <textarea v-model="message2" placeholder="add multiple lines"></textarea>
+            <p style="white-space: pre-line"> {{message2}} </p>
+            <br>
+
+            <div style="margin-top: 20px">
+                <input type="checkbox" id="jack" value="jack" v-model="checkedNames">
+                <label for="jack">jack</label>
+                <input type="checkbox" id="john" value="john" v-model="checkedNames">
+                <label for="john">john</label>
+                <input type="checkbox" id="alan" value="alan" v-model="checkedNames">
+                <label for="alan">alan</label>
+                <br>
+                <span>Checked names : {{checkedNames}} </span>
+            </div>
+
+            <div style="margin-top: 20px">
+                    <input type="radio" id="one" value="one" v-model="picked">
+                    <label for="one">one</label>
+                    <br>
+                    <input type="radio" id="two" value="two" v-model="picked">
+                    <label for="two">two</label>
+                    <br>
+                    <span>Picked: {{picked}} </span>
+            </div>
+            <button type="button" @click="submit">送出</button>
+        </div>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                message:'',
+                message2:'',
+                checkedNames:[],
+                picked:'',
+            },
+            methods:{
+                submit:function(){
+                    console.log(this.message);
+                    var all_data={
+                        msg1:this.message,
+                        msg2:this.message2,
+                        checkval:this.checkedNames,
+                        pickval:this.picked
+                    };
+                    console.log(all_data)
+                }
+            }
+        });
+    </script>
+</body>
+</html>

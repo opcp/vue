@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="ie=edge"
+    >
+    <link
+        rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+    >
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+    >
+    </script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+    >
+    </script>
+    <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .input {
+            background: #aec;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <section>
+            <div class="container">
+                <div class="title">
+                    <div class="input">
+                        {{name}},
+                        {{sex}}性,
+                        年齡為 {{age}},
+                        <br>
+                        {{ favor.length ? '喜歡' : ''}} {{favor.join(',')}},
+                        {{ member ? '已' : '未' }}成為會員
+                    </div>
+                    <div class="menu">
+                        <table>
+                            <tr>
+                                <td class="title">
+                                    姓名:
+                                </td>
+                                <td>
+                                    <input v-model="name">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">
+                                    性別:
+                                </td>
+                                <td>
+                                    <input
+                                        type="radio"
+                                        value="男"
+                                        v-model="sex"
+                                    >男
+                                    <input
+                                        type="radio"
+                                        value="女"
+                                        v-model="sex"
+                                    >女
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">
+                                    年齡:
+                                </td>
+                                <td>
+                                    <select v-model="age">
+                                        <option>20歲以下</option>
+                                        <option>20~30歲</option>
+                                        <option>30~40歲</option>
+                                        <option>40歲~50歲</option>
+                                        <option>50歲以上</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">
+                                    興趣:
+                                </td>
+                                <td>
+                                    <!-- checkbox為多選資料時,data一定要是陣列 -->
+                                    <input
+                                        type="checkbox"
+                                        value="code"
+                                        v-model="favor"
+                                    >code
+                                    <input
+                                        type="checkbox"
+                                        value="game"
+                                        v-model="favor"
+                                    >game
+                                    <input
+                                        type="checkbox"
+                                        value="travel"
+                                        v-model="favor"
+                                    >travel
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="title">
+                                    會員:
+                                </td>
+                                <td>
+                                    <input
+                                        type="checkbox"
+                                        v-model="member"
+                                    >加入
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+<script>
+    let data = {
+        name: 'shan',
+        sex: '男',
+        age: '20~30歲',
+        favor: ['game', 'code', 'travel'],
+        member: true
+    }
+    // checkbox為多選資料時,data(favor))一定要是陣列 
+    let vm = new Vue({
+        el: '#app',
+        data: data
+    })
+</script>
+
+</html>

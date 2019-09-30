@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .red{
+            color: #aec;
+        }
+        .blue{
+            color: #ace;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" v-once>
+        {{a}} 
+        <p>Using mustaches : {{html}}</p>
+        <p v-html='html'></p>
+        <div v-bind:class="color">test</div>
+        <p>{{number * 2}}</p>
+        <p>{{1==2 ? 'yes' : 'no'}}</p>
+        <p>{{message.split('').reverse().join('')}}</p>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                a:'hi Vue',
+                html:'<span style="color: red">this is red words</span>',
+                color:'blue',
+                number:15,
+                ok:1,
+                message:'test'
+            }
+        });
+        // data.a = "hi....new...."
+       
+       vm.$watch('a',function(newVal,oldVal){
+            console.log(newVal,oldVal)
+       })
+       vm.$data.a= 'test'
+    </script>
+</body>
+</html>
